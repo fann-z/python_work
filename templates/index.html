@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Transfer System</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>File Transfer System</h1>
+        </header>
+        <section class="qr-section">
+            <h2>Scan the QR Code</h2>
+            <img src="/static/qr_code.png" alt="QR Code to access the system">
+            <p>Or visit: <a href="#" id="access-url"></a></p>
+        </section>
+        <section class="upload-section">
+            <h2>Upload a File</h2>
+            <form action="/upload" method="post" enctype="multipart/form-data" id="upload-form">
+                <input type="file" name="file" required>
+                <button type="submit">Upload</button>
+            </form>
+        </section>
+        <section class="file-list-section">
+            <h2>Available Files</h2>
+            <ul id="file-list">
+                {% for file in files %}
+                <li>
+                    <a href="/download/{{ file }}">{{ file }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
